@@ -13,6 +13,7 @@ function Hero(HeroObj) {
     let [lineTwo, setLineTwo] = useState(lines[2]);
 
     let [linesCount, setLinesCount] = useState(3);
+    let [sentencesArray, setSentencesArray] = useState([]);
 
     let [typeArea, setTypeArea] = useState('');
 
@@ -21,24 +22,32 @@ function Hero(HeroObj) {
 
     
     const handleType = (e) => {
-        // if (firstKey && !timeOut){
-        firstKey = !firstKey;
-        let typeStr = e.target.value;
-        setTypeArea(typeStr);
-        //}
+        if (firstKey){
+            firstKey = !firstKey;
+            // startTimer();
+        }
+        if (!timeOut){
+            let typeStr = e.target.value;
+
+            setTypeArea(typeStr);
+        }
     }
 
     const handleKey = (e) => {
-        // if (!timeOut){
+        let tempSentence = '';
+        let tempSentencesArray = sentencesArray;
         if (!timeOut && e.key == "Enter" && linesCount < 11) {
+            tempSentence += typeArea;
+            let prev = [tempSentence]
+            tempSentencesArray.push(prev)
+            setSentencesArray(tempSentencesArray)
             setTypeArea('');
             setLineOne(lines[linesCount - 1]);
             setLineTwo(lines[linesCount]);
-            setLinesCount(val => val + 1)
+            setLinesCount(val => val + 1);
+            console.log(sentencesArray);
         }
-        // }
     }
-    //   window.addEventListener('keypress', handleType)
 
     return (
         <>
