@@ -18,13 +18,20 @@ function Hero(HeroObj) {
     let [typeArea, setTypeArea] = useState('');
 
     let firstKey = true;
-    let timeOut = false;
+    let [timeOut, setTimeOut] = useState(false);
+
+    const startTimer = () => { 
+    setTimeout(()=>{
+        setTimeOut(true);
+        console.log("Done.")
+    }
+    ,15000)}
 
     
     const handleType = (e) => {
         if (firstKey){
             firstKey = !firstKey;
-            // startTimer();
+            startTimer();
         }
         if (!timeOut){
             let typeStr = e.target.value;
