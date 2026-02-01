@@ -3,7 +3,7 @@ import Header from "./Components/Header/Header"
 import Hero from './Components/Hero/Hero';
 
 function App() {
-    let para1 = {
+  let para1 = {
         1: "Morning light spills across quiet streets,",
         2: " Birds announce daylight with cheerful persistence,",
         3: "Coffee brews patiently filling kitchens with warmth,",
@@ -15,7 +15,7 @@ function App() {
         9: " Hope sneaks in alongside ordinary simple moments,",
         10: " The day begins quietly promising movement and change"
     }
-    let para2 = {
+  let para2 = {
     1: "Screens glow softly in darkened rooms,",
     2: " Messages travel instantly across invisible networks,",
     3: "Fingers tap rhythms of modern communication,",
@@ -26,9 +26,9 @@ function App() {
     8: " Security and privacy spark ongoing debates,",
     9: " Innovation promises convenience but demands responsibility,",
     10: " Technology remains a tool shaped by human choice"
-}
+  }
 
-let para3 = {
+  let para3 = {
     1: "Rain taps gently against waiting rooftops,",
     2: " Clouds drift lazily across open skies,",
     3: "Earth exhales rich scents after storms,",
@@ -39,9 +39,9 @@ let para3 = {
     8: "Roots drink deeply from generous soil,",
     9: " Growth continues quietly without witness or praise,",
     10: " Nature resets patience within observing minds"
-}
+  }
 
-let para4 = {
+  let para4 = {
     1: "Classrooms hum softly with curious energy,",
     2: "Questions spark journeys toward deeper understanding,",
     3: " Books open doors to distant perspectives,",
@@ -52,12 +52,12 @@ let para4 = {
     8: "Confidence grows alongside disciplined consistent effort,",
     9: " Learning thrives where curiosity feels safe,",
     10: " Knowledge empowers choices long after lessons end"
-}
+  }
 
   return (
     <>
       <Header />
-      <Hero line1="hello1" line2="hello2" para={para1}/>
+      <Hero para={para1}/>
     </>
   )
 }
