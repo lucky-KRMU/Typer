@@ -8,21 +8,36 @@ function TypingArea (typingtext) {
 
 function Hero(HeroObj) {
   let lines = HeroObj.para;
-//   console.log(lines);
 
   let [lineOne, setLineOne] = useState(lines['1']);
   let [lineTwo, setLineTwo] = useState(lines['2']);
 
   let [typeArea, setTypeArea] = useState('');
 
+  let firstKey = true;
+  let timeOut = false;
+  let lineCount = 3;
+
+
 
   const handleType = (e) => {
-    let typeStr = e.target.value;
-    setTypeArea(typeStr);
-    console.log("Str: ", typeArea);
+    // if (firstKey && !timeOut){
+        firstKey = !firstKey;
+        let typeStr = e.target.value;
+        setTypeArea(typeStr);
+    //}
   }
+
   const handleKey = (e) => {
-    console.log("key: ", e.key);
+    // if (!timeOut){
+        if (!timeOut && e.key === "Enter"){
+            setTypeArea("");
+            setLineOne(lines[lineCount - 1]);
+            setLineTwo(lines[lineCount]);
+            lineCount+=1
+            // console.log(lineTwo)
+        }
+    // }
   }
 //   window.addEventListener('keypress', handleType)
 
