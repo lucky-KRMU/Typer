@@ -8,7 +8,7 @@ const choosePara = (n) => {
 
 function App() {
   
-  let para1 = {
+let para1 = {
   1: "Evening light settles softly over busy streets,",
   2: "Shadows stretch patiently along familiar sidewalks,",
   3: "Windows glow warmly behind closing curtains,",

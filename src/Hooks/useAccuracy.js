@@ -1,11 +1,17 @@
 import levenshtein from "fast-levenshtein";
 
+
+// This is a hook to check the accuracy of the input given by user.
+// it takes three parameters, firstly the paragraph array,
+// secondly the user created(typed) paragraph array,
+// and thirdly it takes the time in seconds(strictly).
+
 function useAccuracy( paraArray, userArray, time){
-    let paraLen = paraArray.length;
-    let userLen = userArray.length;
+    let paraLen = paraArray.length; // paragraph array length
+    let userLen = userArray.length; // user array length
 
 
-    let timeInMin = time/60;
+    let timeInMin = time/60; // converting time to minutes
 
     let paraCounter = 0;
     let userCounter = 0;
@@ -37,7 +43,7 @@ function useAccuracy( paraArray, userArray, time){
     let finalWPM = userWPM.reduce((acc, curr) => acc + curr, 0 )/timeInMin; // finding out the final typing speed
     let finalMistakes = mistakeArray.reduce((acc, curr)=> acc+curr, 0)/userLen; // finding out the final Mistakes
 
-    return [finalAccuracy, finalWPM, finalMistakes]
+    return [finalAccuracy, finalWPM, finalMistakes];
 
 
 };

@@ -1,4 +1,5 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect } from 'react';
+import Report from "../Report/Report"
 
 
 // Component for typing area (input field) for taking the input from the user.
@@ -91,6 +92,7 @@ function Hero(HeroObj) {
     return (
         <>
             <div className='h-[85vh]   bg-linear-65 from-teal-200 to-blue-400 flex flex-col justify-center items-center'>
+                <Report></Report>
                 <p className="text-center p-3 text-white font-bold text-4xl">{timerPrefix} {wpmText}s</p>
                 <div id="text-card" className='h-[60vh] w-[80vw] bg-blue-900 rounded-4xl flex flex-col gap-4 justify-center items-center'>
                     <div id="typing-text" className="h-[40vh] w-[60vw] bg-teal-400 rounded-4xl text-4xl text-center flex flex-col items-center justify-center gap-3 font-semibold ">
