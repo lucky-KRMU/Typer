@@ -45,7 +45,7 @@ function Hero(HeroObj) {
             const timer = setTimeout(()=>{  // start the setTimeout function
                 setTimeOut(true); // setting the timeout to be true
                 setWpmText(0);  
-                setReport(useAccuracy(lines, sentencesArray, 15));
+                setReport(useAccuracy(Object.values(lines), sentencesArray, 15));
             }, 15000);
             
             const timeUpdater = setInterval(()=>{   // starting the interval function to update the time left
@@ -62,6 +62,7 @@ function Hero(HeroObj) {
     }, [ firstKey, timeOut ]); // dependencies on the firstkey and timeout state.
 
 
+ 
     // function to handle the typing in typing area
     const handleType = (e) => {
         if (firstKey){
@@ -81,9 +82,9 @@ function Hero(HeroObj) {
         let tempSentencesArray = sentencesArray;
         if (!timeOut && e.key == "Enter" && linesCount < 20) {
             tempSentence += typeArea;
-            let prev = [tempSentence];
+            let prev = tempSentence;
             tempSentencesArray.push(prev);
-            setSentencesArray(tempSentencesArray);
+            setSentencesArray([...tempSentencesArray]);
             setTypeArea('');
             setLineOne(lines[linesCount - 1]);
             setLineTwo(lines[linesCount]);

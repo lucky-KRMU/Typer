@@ -25,7 +25,7 @@ function useAccuracy( paraArray, userArray, time){
         let para = paraArray[paraCounter];  // taking the paragraph[nth] string
         let user = userArray[userCounter];  // taking the user's input's [nth] string
 
-        let userWpmSplitArr = userArray[userCounter].trim().split(' ').length; // calculating the total number of words
+        let userWpmSplitArr = user.trim().split(' ').length; // calculating the total number of words
         userWPM.push(userWpmSplitArr); // appending it into the userWPM array
 
 
