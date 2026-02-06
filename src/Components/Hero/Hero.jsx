@@ -21,27 +21,46 @@ function Hero(HeroObj) {
 
     let [typeArea, setTypeArea] = useState(''); // the state variable store the typing area text
 
-    let firstKey = true; // checking for the first key 
+    let [firstKey, setFirstKey] = useState(true); // checking for the first key 
     let [timeOut, setTimeOut] = useState(false); // state variable to check the time out
-    let [timerCountUpdater , setTimerCountUpdater] = useState(0); // timer function (state variable)
 
-  
-    const startTimer = () => { 
-    setTimeout(()=>{
-        setTimeOut(true);
-        console.log("Done.")
-    }
-    ,15000)}
 
+    
+    
+    
+    
+    
+    
+    
+    
+    // useEffect Hook
     useEffect(() => {
+        
+        if (!firstKey && !timeOut){ // if the first key is pressed and it is still not time out, run the updater function
+            
+            const timer = setTimeout(()=>{  // start the setTimeout function
+                setTimeOut(true); // setting the timeout to be true
+            }, 15000);
+            
+            const timeUpdater = setInterval(()=>{   // starting the interval function to update the time left
+                setWpmText( prev => prev - 1);
+            }, 1000);
+            
+            return () => {
+                clearInterval(timeUpdater); // clearing the interval function
+                clearTimeout(timer); // clearing the timeout function
+            };
+            
+        }
 
-    }, [timerCountUpdater])
+    }, [ firstKey, timeOut ]); // dependencies on the firstkey and timeout state.
+
 
     // function to handle the typing in typing area
     const handleType = (e) => {
         if (firstKey){
-            firstKey = !firstKey;
-            startTimer(); // start the timer function if first key is preseed
+            setFirstKey(false);
+            // startTimer(); // start the timer function if first key is preseed
         }
         if (!timeOut){
             let typeStr = e.target.value;
