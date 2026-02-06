@@ -34,20 +34,13 @@ function useAccuracy( paraArray, userArray, time){
 
 
     let finalAccuracy = Math.max(0, accuracyArray.reduce((acc, curr)=> acc + curr, 0)/userLen); // finding out the final accuracy
-    let finalWPM = userWPM.reduce((acc, curr) => acc + curr, 0 )/timeInMin;
-    let finalMistakes = mistakeArray.reduce((acc, curr)=> acc+curr, 0)/userLen;
+    let finalWPM = userWPM.reduce((acc, curr) => acc + curr, 0 )/timeInMin; // finding out the final typing speed
+    let finalMistakes = mistakeArray.reduce((acc, curr)=> acc+curr, 0)/userLen; // finding out the final Mistakes
 
     return [finalAccuracy, finalWPM, finalMistakes]
 
 
 };
 
-let original = ["Morning light spills across quiet streets,"];
 
-let toCheck = ["Morning light spills a;lkdsfcross quiet ts,"];
-
-let toLog = useAccuracy(original, toCheck, 5);
-let [a,b,c] = toLog;
-console.log(a,b,c)
-
-// export default useAccuracy;
+export default useAccuracy;
