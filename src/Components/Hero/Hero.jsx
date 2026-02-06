@@ -18,6 +18,7 @@ function Hero(HeroObj) {
     let [sentencesArray, setSentencesArray] = useState([]); // state variable to store the input from the use to check it's accuracy later on
 
     let [wpmText, setWpmText] = useState(15); // the initial typing time set 
+    let [timerPrefix, setTimerPrefix] = useState('Time left: ');
 
     let [typeArea, setTypeArea] = useState(''); // the state variable store the typing area text
 
@@ -40,6 +41,7 @@ function Hero(HeroObj) {
             
             const timer = setTimeout(()=>{  // start the setTimeout function
                 setTimeOut(true); // setting the timeout to be true
+                setWpmText(0);  
             }, 15000);
             
             const timeUpdater = setInterval(()=>{   // starting the interval function to update the time left
@@ -73,7 +75,7 @@ function Hero(HeroObj) {
     const handleKey = (e) => {
         let tempSentence = '';
         let tempSentencesArray = sentencesArray;
-        if (!timeOut && e.key == "Enter" && linesCount < 11) {
+        if (!timeOut && e.key == "Enter" && linesCount < 20) {
             tempSentence += typeArea;
             let prev = [tempSentence];
             tempSentencesArray.push(prev);
@@ -89,7 +91,7 @@ function Hero(HeroObj) {
     return (
         <>
             <div className='h-[85vh]   bg-linear-65 from-teal-200 to-blue-400 flex flex-col justify-center items-center'>
-                <p className="text-center p-3 text-white font-bold text-4xl">Time left: {wpmText}s</p>
+                <p className="text-center p-3 text-white font-bold text-4xl">{timerPrefix} {wpmText}s</p>
                 <div id="text-card" className='h-[60vh] w-[80vw] bg-blue-900 rounded-4xl flex flex-col gap-4 justify-center items-center'>
                     <div id="typing-text" className="h-[40vh] w-[60vw] bg-teal-400 rounded-4xl text-4xl text-center flex flex-col items-center justify-center gap-3 font-semibold ">
                         <div id="line-1">{lineOne}</div>
