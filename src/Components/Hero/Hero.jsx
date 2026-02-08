@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import Report from "../Report/Report";
 import useAccuracy from '../../Hooks/useAccuracy';
 
@@ -18,6 +18,8 @@ function Hero(HeroObj) {
 
     let [linesCount, setLinesCount] = useState(3);  // State variable to update the actively displaying line
     let [sentencesArray, setSentencesArray] = useState([]); // state variable to store the input from the use to check it's accuracy later on
+    
+    let inputVal = useRef('');
 
     let [wpmText, setWpmText] = useState(15); // the initial typing time set 
 
@@ -26,7 +28,11 @@ function Hero(HeroObj) {
     let [firstKey, setFirstKey] = useState(true); // checking for the first key 
     let [timeOut, setTimeOut] = useState(false); // state variable to check the time out
 
-    let [report, setReport] = useState([1,2,3]);
+    let [report, setReport] = useState([0,0,0]);
+
+    
+
+   
 
 
     
@@ -45,7 +51,12 @@ function Hero(HeroObj) {
             const timer = setTimeout(()=>{  // start the setTimeout function
                 setTimeOut(true); // setting the timeout to be true
                 setWpmText(0);  
-                setReport(useAccuracy(Object.values(lines), sentencesArray, 15));
+                let senArray = sentencesArray;
+                senArray.push(inputVal.current);
+                setSentencesArray([...senArray]);
+                
+                console.log(sentencesArray);
+                setReport(useAccuracy(Object.values(lines), sentencesArray, 15)); // Updating the Report Stats
             }, 15000);
             
             const timeUpdater = setInterval(()=>{   // starting the interval function to update the time left
@@ -72,25 +83,31 @@ function Hero(HeroObj) {
         if (!timeOut){
             let typeStr = e.target.value;
             setTypeArea(typeStr); // if time is still not out, allow user to type.
+            inputVal.current = typeStr;
+            
+            
         }
-
     }
 
     // function to implement whenever the value is changed/updated in the typing area 
     const handleKey = (e) => {
         let tempSentence = '';
         let tempSentencesArray = sentencesArray;
-        if (!timeOut && e.key == "Enter" && linesCount < 20) {
+        if (!timeOut && e.key === "Enter" && linesCount < 20) {
             tempSentence += typeArea;
             let prev = tempSentence;
+            inputVal = prev;
             tempSentencesArray.push(prev);
             setSentencesArray([...tempSentencesArray]);
             setTypeArea('');
             setLineOne(lines[linesCount - 1]);
             setLineTwo(lines[linesCount]);
             setLinesCount(val => val + 1);
-            console.log(sentencesArray);
+            // console.log(sentencesArray);
         }
+
+        
+
     }
 
     return (
