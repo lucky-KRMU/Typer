@@ -39,9 +39,9 @@ function useAccuracy( paraArray, userArray, time){
     }
 
 
-    let finalAccuracy = Math.max(0, accuracyArray.reduce((acc, curr)=> acc + curr, 0)/userLen); // finding out the final accuracy
+    let finalAccuracy = Math.max(0, accuracyArray.reduce((acc, curr)=> acc + curr, 0)/userLen); // finding out the final accurac
     let finalWPM = userWPM.reduce((acc, curr) => acc + curr, 0 )/timeInMin; // finding out the final typing speed
-    let finalMistakes = mistakeArray.reduce((acc, curr)=> acc+curr, 0)/userLen; // finding out the final Mistakes
+    let finalMistakes = Math.ceil(mistakeArray.reduce((acc, curr)=> acc+curr, 0)/userLen); // finding out the final Mistakes
 
     return [finalAccuracy, finalWPM, finalMistakes];
 
