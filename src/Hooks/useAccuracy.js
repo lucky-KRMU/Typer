@@ -25,17 +25,20 @@ function useAccuracy( paraArray, userArray, time){
         let para = paraArray[paraCounter];  // taking the paragraph[nth] string
         let user = userArray[userCounter];  // taking the user's input's [nth] string
 
+
         let userWpmSplitArr = user.trim().split(' ').length; // calculating the total number of words
         userWPM.push(userWpmSplitArr); // appending it into the userWPM array
 
 
         const distance = levenshtein.get(para, user); // levenshtein initiation
         const accuracy = ((paraLen - distance)/paraLen)*100; // finding out the accuracy
+    
 
         accuracyArray.push(accuracy); // appending the accuracy in the accuracy array
         mistakeArray.push(distance); // appending the number of mistakes in to mistake array
 
         userCounter++; // increasing the user counter by 1
+        paraCounter++; // increasing the paragraph counter by 1
     }
 
 

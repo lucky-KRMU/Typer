@@ -232,7 +232,7 @@ let para10 = {
 let paraArray = [para1, para2, para3, para4, para5, para6, para7, para8, para9, para10];
 
 let chooseParaNumber = choosePara(10);
-console.log(chooseParaNumber);
+// console.log(chooseParaNumber);
 let finalPara = paraArray[chooseParaNumber];
 
 return (

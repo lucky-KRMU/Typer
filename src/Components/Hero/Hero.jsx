@@ -64,7 +64,7 @@ function Hero(HeroObj) {
                 setWrap(true);
                 // console.log(sentencesArray);
                 setReport(useAccuracy(Object.values(lines), sentencesArray, 15)); // Updating the Report Stats
-                console.log(useAccuracy(Object.values(lines), sentencesArray, 15));
+                // console.log(useAccuracy(Object.values(lines), sentencesArray, 15));
             }, 15000);
             
             const timeUpdater = setInterval(()=>{   // starting the interval function to update the time left
