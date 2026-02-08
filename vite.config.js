@@ -11,5 +11,5 @@ export default defineConfig({
   server : [
     
   ],
-  base: '/typer/',
+  base: '/Typer/',
 })
