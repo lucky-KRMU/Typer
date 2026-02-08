@@ -6,7 +6,7 @@ import useAccuracy from '../../Hooks/useAccuracy';
 // Component for typing area (input field) for taking the input from the user.
 function TypingArea(typingtext) {
     return (
-        <input id="typing-area" className="h-[10vh] w-[60vw] bg-teal-400 rounded-4xl text-4xl text-center text-white font-semibold py-3 cursor-pointer focus:outline-none" placeholder="Type Here to Start..." value={typingtext.inputVal} onChange={typingtext.onHandleType} onKeyDown={typingtext.onHandleKey} />
+        <input id="typing-area" className="h-[10vh] w-[70vw] bg-blue-900 rounded-4xl text-4xl text-center text-white font-semibold py-3 cursor-pointer font-[funnel_display] focus:outline-none" placeholder="Type Here to Start..." value={typingtext.inputVal} onChange={typingtext.onHandleType} onKeyDown={typingtext.onHandleKey} />
     );
 }
 
@@ -19,7 +19,7 @@ function Hero(HeroObj) {
     let [linesCount, setLinesCount] = useState(3);  // State variable to update the actively displaying line
     let [sentencesArray, setSentencesArray] = useState([]); // state variable to store the input from the use to check it's accuracy later on
     
-    let inputVal = useRef('');
+    let inputVal = useRef(''); // using the useRef hook to take the final value of the input field after timeout 
 
     let [wpmText, setWpmText] = useState(15); // the initial typing time set 
 
@@ -30,6 +30,7 @@ function Hero(HeroObj) {
 
     let [report, setReport] = useState([0,0,0]);
 
+    
     
 
    
@@ -53,9 +54,9 @@ function Hero(HeroObj) {
                 setWpmText(0);  
                 let senArray = sentencesArray;
                 senArray.push(inputVal.current);
-                setSentencesArray([...senArray]);
+                setSentencesArray([...senArray]); // updating the array with the final value from the input field
                 
-                console.log(sentencesArray);
+                // console.log(sentencesArray);
                 setReport(useAccuracy(Object.values(lines), sentencesArray, 15)); // Updating the Report Stats
             }, 15000);
             
@@ -111,12 +112,13 @@ function Hero(HeroObj) {
     }
 
     return (
+        // linear-gradient => bg-linear-65 from-teal-200 to-blue-400
         <>
-            <div className='h-[85vh]   bg-linear-65 from-teal-200 to-blue-400 flex flex-col justify-center items-center'>
+            <div className='h-[85vh]  bg-blue-950  flex flex-col justify-center items-center'>
                 <Report accuracy={report[0]} errors={report[2]} wpm={report[1]} />
-                <p className="text-center p-3 text-white font-bold text-4xl">Your Time: {wpmText}s</p>
-                <div id="text-card" className='h-[60vh] w-[80vw] bg-blue-900 rounded-4xl flex flex-col gap-4 justify-center items-center'>
-                    <div id="typing-text" className="h-[40vh] w-[60vw] bg-teal-400 rounded-4xl text-4xl text-center flex flex-col items-center justify-center gap-3 font-semibold ">
+                <p className="text-center p-3 text-white font-bold text-4xl font-[goldman]">Your Time: {wpmText}s</p>
+                <div id="text-card" className='h-[60vh] w-[80vw] bg-blue-950 rounded-4xl flex flex-col gap-4 justify-center items-center'>
+                    <div id="typing-text" className="h-[40vh] w-[70vw] bg-blue-900 rounded-4xl text-4xl text-center flex flex-col items-center justify-center gap-3 font-semibold text-white font-[funnel_display] ">
                         <div id="line-1">{lineOne}</div>
                         <div id="line-1">{lineTwo}</div>
                     </div>

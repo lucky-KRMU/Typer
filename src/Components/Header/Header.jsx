@@ -3,7 +3,7 @@ import React from 'react'
 function Header () {
   return (
     <>
-    <h1 className="text-center text-teal-200 bg-blue-950 font-extrabold font-sans text-6xl h-[15vh] py-4">Typer</h1>
+    <h1 className="text-center font-[corinthia] text-teal-200 bg-blue-900 font-extrabold  text-7xl h-[15vh] py-4">Typer</h1>
     </>
   )
 }
